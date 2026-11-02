@@ -1,0 +1,18 @@
+{
+  "members": [
+    { "id": "member-1", "name": "Mira Fern", "joined": "2024-04-12", "plot": "Basil 04" },
+    { "id": "member-2", "name": "Rowan Vale", "joined": "2025-03-08", "plot": "Clover 12" },
+    { "id": "member-3", "name": "Cleo Moss", "joined": "2026-02-19", "plot": "Sage 07" }
+  ],
+  "bookings": [
+    { "id": "booking-1", "memberId": "member-1", "title": "Autumn planting", "startsAt": "2026-11-08T10:00:00Z", "plot": "Basil 04" },
+    { "id": "booking-2", "memberId": "member-1", "title": "Compost morning", "startsAt": "2026-10-18T09:00:00Z", "plot": "Shared beds" },
+    { "id": "booking-3", "memberId": "member-1", "title": "Winter greens", "startsAt": "2026-12-05T11:00:00Z", "plot": "Basil 04" },
+    { "id": "booking-4", "memberId": "member-2", "title": "Seed swap", "startsAt": "2026-11-15T14:00:00Z", "plot": "Clover 12" }
+  ],
+  "volunteerPoints": [
+    { "memberId": "member-1", "activity": "Shared bed care", "points": 20 },
+    { "memberId": "member-1", "activity": "Welcome afternoon", "points": 15 },
+    { "memberId": "member-2", "activity": "Tool shed tidy", "points": 10 }
+  ]
+}

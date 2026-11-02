@@ -1,0 +1,30 @@
+{
+  "name": "demodashboard-1101-a",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "test": "vitest run",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "astro": "5.18.2",
+    "@astrojs/react": "4.4.2",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "tailwindcss": "4.1.13",
+    "@tailwindcss/vite": "4.1.13"
+  },
+  "devDependencies": {
+    "vitest": "3.2.4",
+    "@astrojs/check": "0.9.4",
+    "typescript": "5.9.3",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@testing-library/react": "16.3.0",
+    "@testing-library/user-event": "14.6.1",
+    "jsdom": "26.1.0"
+  }
+}

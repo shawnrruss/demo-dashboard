@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BookingsList from '../../components/BookingsList';
+import { getMember, listMembers, listBookings, listVolunteerPoints } from '../../lib/data';
+export async function getStaticPaths() {
+  return (await listMembers()).map(member => ({ params: { id: member.id } }));
+}
+const member = await getMember(Astro.params.id!);
+if (!member) return Astro.redirect('/');
+const bookings = await listBookings(member.id);
+const points = await listVolunteerPoints(member.id);
+---
+<Layout title={member.name}>
+  <a class="text-sm underline underline-offset-4" href="/">← All members</a>
+  <p class="mt-8 text-sm font-semibold uppercase tracking-widest text-green-800">Member profile</p>
+  <h1 class="mt-3 text-4xl font-bold tracking-tight sm:text-6xl">{member.name}</h1>
+  <p class="mt-4 text-lg text-green-950/70">Plot {member.plot} · Member since {member.joined}</p>
+  <div class="mt-10 grid grid-cols-1 items-start gap-8 lg:grid-cols-[2fr_1fr]">
+    <BookingsList bookings={bookings} client:load />
+    <section class="rounded-2xl bg-green-950 p-6 text-white" aria-labelledby="points-title">
+      <h2 id="points-title" class="text-xl font-semibold">Volunteer points</h2>
+      <p class="my-6 text-5xl font-bold">{points.reduce((total, entry) => total + entry.points, 0)} <span class="text-base font-normal text-lime-100">points earned</span></p>
+      <p class="mb-5 text-sm text-lime-100">Every helping hand makes a difference.</p>
+      <ul class="space-y-3">{points.map(entry => <li class="flex justify-between gap-4 border-t border-white/20 pt-3 text-sm"><span>{entry.activity}</span><span>+{entry.points}</span></li>)}</ul>
+      {points.length === 0 && <p class="text-sm">Your next helping hand starts here.</p>}
+    </section>
+  </div>
+</Layout>

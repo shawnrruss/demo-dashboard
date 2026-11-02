@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+interface Props { title: string }
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="An original community garden club dashboard with made-up members and bookings." />
+    <title>{title} · Fern & Field</title>
+  </head>
+  <body class="font-sans">
+    <header class="border-b border-green-900/15 bg-white/70">
+      <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-6" aria-label="Main navigation">
+        <a class="text-xl font-bold tracking-tight" href="/">Fern & Field <span class="font-normal">/ garden club</span></a>
+        <a class="rounded-full bg-green-950 px-5 py-2 text-sm text-white" href="/">Members</a>
+      </nav>
+    </header>
+    <main class="mx-auto max-w-6xl px-5 py-10 sm:py-16"><slot /></main>
+    <footer class="mx-auto max-w-6xl border-t border-green-900/15 px-5 py-6 text-sm text-green-950/70">Original demo · Made-up data · Growing together since 2024</footer>
+  </body>
+</html>
