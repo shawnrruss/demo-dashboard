@@ -1,12 +1,12 @@
 # Fern & Field · member dashboard
 
-A community garden dashboard with member profiles, filterable plot bookings and volunteer contributions.
+A member dashboard for browsing profiles, finding upcoming plot bookings, and reviewing volunteer activity. Built with Astro, React, TypeScript, and Tailwind CSS.
 
 [![CI](https://github.com/shawnrruss/demo-dashboard/actions/workflows/ci.yml/badge.svg)](https://github.com/shawnrruss/demo-dashboard/actions/workflows/ci.yml)
 
 ![Member dashboard showing plot bookings, date filters and volunteer points](docs/preview.png)
 
-Original demo, made-up data, not client work. AI-assisted implementation and tests.
+Original portfolio demonstration with fictional data; not client work. AI-assisted implementation and tests. Static pages and local fixtures; no authentication or backend.
 
 ## What it shows
 
@@ -30,6 +30,10 @@ Open the local URL printed by Astro. `/` lists members; each member links to
 All application data lives in `src/data/fixture.json`; the site makes no backend or external network requests.
 No accounts, secrets, external fonts or real client assets are required.
 Set `ASTRO_TELEMETRY_DISABLED=1` to disable build-tool telemetry.
+
+## Try the dashboard
+
+Open a member profile, choose **Upcoming**, and reverse the date sort. Switch between date filters to inspect the results and any empty state. See [CHANGE-NOTE.md](CHANGE-NOTE.md) for the example feature handover.
 
 ## Tests and production build
 
@@ -60,7 +64,7 @@ The script captures `/members/member-1/` at 1440 × 1100 and closes its browser 
 | `src/pages/` | Member directory and statically generated profiles |
 | `src/components/BookingsList.tsx` | Interactive booking filter and date sort |
 | `src/lib/` | Typed fixture readers and pure booking functions |
-| `src/data/fixture.json` | Defines the `Member`/`Booking`/`VolunteerPoints` types; made-up members, bookings and volunteer activity |
+| `src/data/fixture.json` | Made-up members, bookings and volunteer activity; TypeScript types are inferred in `src/lib/data.ts` |
 | `src/layouts/`, `src/styles/` | Shared shell and Tailwind styling |
 | `tests/` | Data boundary, pure booking helpers and component interaction tests |
 | `scripts/preview.mjs`, `docs/preview.png` | Reproducible product screenshot |
@@ -71,5 +75,6 @@ The script captures `/members/member-1/` at 1440 × 1100 and closes its browser 
 `src/lib/data.ts` exports asynchronous `listMembers()`, `getMember(id)`,
 `listBookings(memberId)` and `listVolunteerPoints(memberId)`. Results are typed
 and cloned so consumers cannot mutate the fixture. Unknown members return null;
-unknown booking/points queries return empty arrays. Replace this module to connect
-a Supabase-style backend without changing the pages or components.
+unknown booking/points queries return empty arrays. This isolates the fixture-reading boundary
+for a future data-source integration. Adding a backend would also require decisions about
+authentication, build-time versus request-time rendering, writes, and persistence.
