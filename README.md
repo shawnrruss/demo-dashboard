@@ -59,10 +59,10 @@ The script captures `/members/member-1/` at 1440 × 1100 and closes its browser 
 | --- | --- |
 | `src/pages/` | Member directory and statically generated profiles |
 | `src/components/BookingsList.tsx` | Interactive booking filter and date sort |
-| `src/lib/` | Typed fixture access and pure booking functions |
-| `src/data/fixture.json` | Made-up members, bookings and volunteer activity |
+| `src/lib/` | Typed fixture readers and pure booking functions |
+| `src/data/fixture.json` | Defines the `Member`/`Booking`/`VolunteerPoints` types; made-up members, bookings and volunteer activity |
 | `src/layouts/`, `src/styles/` | Shared shell and Tailwind styling |
-| `tests/` | Data, booking, interaction and CI-presence tests |
+| `tests/` | Data boundary, pure booking helpers and component interaction tests |
 | `scripts/preview.mjs`, `docs/preview.png` | Reproducible product screenshot |
 | `.github/workflows/ci.yml` | Install, tests, types, lint and build |
 

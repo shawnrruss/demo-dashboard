@@ -1,6 +1,9 @@
+/** Hydrated island: filter buttons plus a date sort over one member's bookings. */
 import { useState } from 'react';
 import type { Booking } from '../lib/data';
 import { filterBookings, sortBookings, type BookingFilter, type DateSort } from '../lib/bookings';
+
+const FILTERS: BookingFilter[] = ['all', 'upcoming', 'past'];
 
 export default function BookingsList({ bookings }: { bookings: Booking[] }) {
   const [filter, setFilter] = useState<BookingFilter>('all');
@@ -10,11 +13,7 @@ export default function BookingsList({ bookings }: { bookings: Booking[] }) {
     <h2 id="bookings-title" className="mb-5 text-2xl font-semibold">Plot bookings</h2>
     <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
       <div role="group" aria-label="Filter bookings" className="flex flex-wrap gap-2">
-        {(['all', 'upcoming', 'past'] as const).map(value => <button
-          key={value}
-          type="button"
-          aria-pressed={filter === value}
-          onClick={() => setFilter(value)}
+        {FILTERS.map(value => <button key={value} type="button" aria-pressed={filter === value} onClick={() => setFilter(value)}
           className={`min-h-11 rounded-full border border-green-900/25 px-4 py-2 text-sm ${filter === value ? 'bg-green-950 text-white' : 'bg-white text-green-950'}`}
         >{value.charAt(0).toUpperCase() + value.slice(1)}</button>)}
       </div>

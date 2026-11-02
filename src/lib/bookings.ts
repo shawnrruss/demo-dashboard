@@ -1,13 +1,15 @@
+/** Pure booking filters and sorts; instants are compared numerically so timezone offsets line up. */
 import type { Booking } from './data';
 
 export type BookingFilter = 'all' | 'upcoming' | 'past';
 export type DateSort = 'asc' | 'desc';
 
 export function filterBookings(bookings: readonly Booking[], filter: BookingFilter, now: Date): Booking[] {
-  return bookings.filter(booking => {
-    const startsAt = Date.parse(booking.startsAt);
-    return filter === 'all' || (filter === 'upcoming' ? startsAt >= now.getTime() : startsAt < now.getTime());
-  });
+  if (filter === 'all') return [...bookings];
+  const cutoff = now.getTime();
+  return bookings.filter(booking => filter === 'upcoming'
+    ? Date.parse(booking.startsAt) >= cutoff
+    : Date.parse(booking.startsAt) < cutoff);
 }
 
 export function sortBookings(bookings: readonly Booking[], order: DateSort): Booking[] {

@@ -1,4 +1,5 @@
 ---
+// getStaticPaths fixes the member set at build time, so a null here can only be a stale link.
 import Layout from '../../layouts/Layout.astro';
 import BookingsList from '../../components/BookingsList';
 import { getMember, listMembers, listBookings, listVolunteerPoints } from '../../lib/data';

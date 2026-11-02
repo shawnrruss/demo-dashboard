@@ -1,3 +1,4 @@
+/** Regenerates docs/preview.png from the built site with Playwright. */
 import console from 'node:console';
 import process from 'node:process';
 import { mkdir } from 'node:fs/promises';
